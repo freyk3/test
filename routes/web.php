@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function()
+{
+
+    Route::get('/admin', 'AdminController@index')->name('admin');
+
+    Route::get('/admin/item/{id}', 'AdminController@item');
+    Route::post('/admin/update/{id}', 'AdminController@update');
+    Route::get('/admin/create', 'AdminController@createpage');
+    Route::post('/admin/create', 'AdminController@create');
+    Route::any('/admin/delete/{id}', 'AdminController@delete');
+
+});
+
