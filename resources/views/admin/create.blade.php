@@ -25,7 +25,7 @@
                                 <input name="published" id="published" type="checkbox">
                             </div>
                             <div class="form-group">
-                                <input type="submit" class="btn btn-default" value="Сохранить">
+                                <input type="submit" class="btn btn-default" value="Добавить">
                             </div>
                         </form>
                     </div>

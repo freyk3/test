@@ -18,7 +18,7 @@
                                 @foreach($items as $item)
                                     <tr role="button" onclick="openItem({{$item->id}})">
                                         <td>{{$item->title}}</td>
-                                        <td><p style="max-height: 40px; overflow: hidden; word-break: break-all; ">{{$item->text}}</p></td>
+                                        <td><p style="max-height: 40px; overflow: hidden; word-break: break-all;">{{$item->text}}</p></td>
                                     </tr>
                                 @endforeach
                             </table>

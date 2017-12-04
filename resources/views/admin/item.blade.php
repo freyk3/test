@@ -34,6 +34,38 @@
                         </form>
                     </div>
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span>Комментарии к материалу</span>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>id</th>
+                                <th>Автор</th>
+                                <th>Текст</th>
+                                <th>Действие</th>
+                            </tr>
+                            @foreach($comments as $comment)
+                                <tr>
+                                    <td>
+                                        {{$comment->id}}
+                                    </td>
+                                    <td>
+                                        {{$comment->name}}
+                                    </td>
+                                    <td>
+                                        <p style="max-height: 100px; overflow: auto;">{{$comment->text}}</p>
+                                    </td>
+                                    <td>
+                                        <a href="/admin/deleteComment/{{$comment->id}}"><button type="button" class="btn btn-default">Удалить</button></a>
+                                    </td>
+
+                                </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Item;
@@ -23,7 +24,8 @@ class AdminController extends Controller
 
     public function item($id)
     {
-        $view['item'] = Item::find($id);
+        $item = $view['item'] = Item::find($id);
+        $view['comments'] = $item->comments()->get();
         return view('admin/item', $view);
     }
 
@@ -56,8 +58,18 @@ class AdminController extends Controller
     public function delete($id)
     {
         $item = Item::find($id);
+        foreach ($item->comments()->get() as $comment)
+            $comment->delete();
         $item->delete();
         return redirect('/admin/');
     }
+
+    public function deleteComment($id)
+    {
+        $comment = Comment::find($id);
+        $comment->delete();
+        return redirect()->back();
+    }
+
 
 }

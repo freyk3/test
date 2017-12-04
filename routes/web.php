@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/item/{id}', 'HomeController@item');
+Route::any('/item/{id}/newComment', 'HomeController@newComment');
+Route::any('/item/{id}/getComments', 'HomeController@getComments');
 
 Auth::routes();
 
@@ -25,6 +28,7 @@ Route::group(['middleware' => 'auth'], function()
     Route::get('/admin/create', 'AdminController@createpage');
     Route::post('/admin/create', 'AdminController@create');
     Route::any('/admin/delete/{id}', 'AdminController@delete');
+    Route::any('/admin/deleteComment/{id}', 'AdminController@deleteComment');
 
 });
 
